@@ -18,7 +18,7 @@ import Book from "../components/Book.vue"
 <td>{{book.description}}</td>
 <td><img style="border: 10px; height: 100; width: 100px; border-radius: 10;" v-bind:src="`http://localhost:5000/profile/${book.photo}`"></td>
     </tr> -->
-<router-link to="/book/624b45b418401bcd6c920809"><Book :bookName ="book.name" :bookDesc = "book.description" :bookPhoto="book.photo" /></router-link>
+<router-link :to="{name:'book', params:{id:book._id}}"><Book :bookName ="book.name" :bookDesc = "book.description" :bookPhoto="book.photo" /></router-link>
 </tr>
 </table>
 

@@ -10,7 +10,7 @@ const routes = [
     component: AllBooks,
   },
   {
-    name: "SingleBook",
+    name: "book",
     path: "/book/:id",
     component: SingleBookDetailsVue,
   },
