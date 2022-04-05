@@ -15,7 +15,7 @@ const routes = [
     component: SingleBookDetailsVue,
   },
   {
-    name: "Qoue",
+    name: "quote",
     path: "/qoute",
     component: RandomQoute,
   },

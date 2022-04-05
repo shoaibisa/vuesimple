@@ -1,54 +1,71 @@
-<!-- <script setup>
-defineProps({
-  bookName: {
-    type: String,
-    required: true
-  },
-  bookDesc:{
-    type:String,
-        required: true
+<script setup>
 
-  },
-  bookPhoto:{
-          type:String,
-        required: true
-  }
-})
-</script> -->
-
+import Navbar from "../components/navbar.vue";
+import Footer from "../components/footer.vue";
+</script>
 <template>
-<div v-if="book">
 
-    <h2 v-if="book.name">{{book.name}}</h2> -->
-<p v-if="book.description">{{book.description}}</p>
-<td v-if="book.photo"><img style="border: 10px; height: 100; width: 100px; border-radius: 10;" v-bind:src="`http://localhost:5000/profile/${book.photo}`"></td>
 
-</div>
-<h2>{{ $route.params.id }}</h2>
- <!-- <h2>{{book}} </h2>  -->
- <!-- <h3>{{bookId}}</h3> -->
- <!-- <BookList></BookList> -->
+<Navbar/>
+ <main class="main">
+        <h1 class="heading-1 page-heading">Book Details</h1>
+        <div class="book-details" v-if="book">
+          <div class="book-details__img">
+            <img v-bind:src="`http://localhost:5000/profile/${book.photo}`" alt="" />
+          </div>
+          <div class="book-details__content" >
+            <div class="book-details__content__title" v-if="book.name">{{ book.name }}</div>
+            <div class="book-details__content__description" v-if="book.description">{{ book.description }}</div>
+          </div>
+        </div>
+      </main>
+      <Footer/>
+   
+
 </template>
 
 <script >
 export default {
-    name:'BookList',
-//     watch :{
-// '$route'(to, from){
-//   bookId:to.params.id
-// }
-    // },
-    data(){
-        return {book:undefined, bookId:undefined}
-    },
-    mounted(){
-        fetch(`http://localhost:5000/book/`+this.$route.params.id )
-        .then(response => response.json())
-    .then(data =>{
-        this.book=data.book;
-console.warn(data)
-    })
-    }
+  name: "BookList",
+  data() {
+    return { book: undefined, bookId: undefined };
+  },
+  mounted() {
+    fetch(`http://localhost:5000/book/` + this.$route.params.id)
+      .then((response) => response.json())
+      .then((data) => {
+        this.book = data.book;
+        console.warn(data);
+      });
+  },
+};
+</script>
+<style scoped>
+.main.main {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+}
+h1.heading-1 {
+  text-align: center;
 }
 
-</script>
+/* Book Details Page */
+.book-details {
+  padding: 0 30px;
+  display: flex;
+  grid-gap: 20px;
+}
+.book-details__img {
+  max-width: 300px;
+}
+.book-details__content {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+}
+.book-details__content__title {
+  font-weight: 600;
+}
+
+</style>

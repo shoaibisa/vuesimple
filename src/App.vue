@@ -1,26 +1,44 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import AllBooks from "./components/AllBooks.vue"
+ import Rendom  from "./components/RandomQoute.vue"
 </script>
 
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-  <router-link to ="/">Books</router-link>
-  <br/>
-  <router-link to ="/">Book details</router-link>
   <router-view></router-view>
+ 
 </template>
 
-<style>
+<style> 
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: inherit;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #252525;
+}
+/* Elements */
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+img {
+  width: 100%;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 </style>

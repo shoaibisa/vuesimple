@@ -2,23 +2,33 @@
 defineProps({
   bookName: {
     type: String,
-    required: true
+    required: true,
   },
-  bookDesc:{
-    type:String,
-        required: true
-
+  bookDesc: {
+    type: String,
+    required: true,
   },
-  bookPhoto:{
-          type:String,
-        required: true
-  }
-})
+  bookPhoto: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
-<h2>{{bookName}}</h2>
-<p>{{bookDesc}}</p>
-<td><img style="border: 10px; height: 100; width: 100px; border-radius: 10;" v-bind:src="`http://localhost:5000/profile/${bookPhoto}`"></td>
-
+  <div class="books__book">
+    <div class="books__book__img">
+      <img
+        v-bind:src="`http://localhost:5000/profile/${bookPhoto}`"
+        alt="Book Name"
+      />
+    </div>
+    <div class="books__book__name">{{ bookName }}</div>
+  </div>
 </template>
+<style scoped>
+.books__book {
+  cursor: pointer;
+  overflow: hidden;
+}
+</style>
